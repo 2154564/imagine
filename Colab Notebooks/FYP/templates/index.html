@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="stylesheet" href="{{url_for('static',filename='style/index.css')}}">
+
+ 
+
+<body >
+  <a id="aboutUsLink" ">About Us</a>
+  <a id="tutorial" href="https://youtu.be/jMHEVEr8XTo">How To Use</a>
+  <a  type="button" id = "btn2" onclick="move_image_gen()">Image Generator</a>
+    <div class="loader-wrapper">
+      <span class="loader">Training...<span class="loader-inner"></span></span>
+    </div>
+    
+
+   
+    <div class = "container">
+     
+      <div class = "bubbles"> 
+        <span style=" --i : 11;"></span>
+        <span style= " --i : 22;"></span>
+        <span style=" --i : 12;"></span>
+        <span style= " --i : 15;"></span>
+        <span style=" --i : 16;"></span>
+        <span style= " --i : 17;"></span>
+        <span style=" --i : 19;"></span>
+        <span style= " --i : 20;"></span>
+        <span style=" --i : 25;"></span>
+        <span style= " --i : 14;"></span>
+        <span style=" --i : 11;"></span>
+        <span style= " --i : 22;"></span>
+        <span style=" --i : 12;"></span>
+        <span style= " --i : 15;"></span>
+        <span style=" --i : 16;"></span>
+        <span style= " --i : 17;"></span>
+        <span style=" --i : 19;"></span>
+        <span style= " --i : 20;"></span>
+        <span style=" --i : 25;"></span>
+        <span style= " --i : 14;"></span>
+        <span style=" --i : 11;"></span>
+        <span style= " --i : 12;"></span>
+        <span style= "--i : 22;"></span>
+        <span style="--i : 13;"></span>
+        <span style= "--i : 23;"></span>
+        <span style= "--i : 24;"> </span>
+        <span style= "--i : 14;"> </span>
+        <span style="--i : 27;"> </span>
+        <span style=" --i : 11;"></span>
+        <span style= " --i : 12;"></span>
+        <span style= "--i : 12;"></span>
+        <span style="--i : 16;"></span>
+        <span style= "--i : 23;"></span>
+        <span style= " --i : 15;"></span>
+        <span style=" --i : 16;"></span>
+        <span style= " --i : 17;"></span>
+        <span style=" --i : 19;"></span>
+        <span style= " --i : 20;"></span>
+        <span style=" --i : 25;"></span>
+        <span style= " --i : 14;"></span>
+        
+    </div>
+
+
+      <h2> Imagination <br> <span class="jj" >Train your Art Style<span> </h2>
+    
+   </div>
+
+
+      <div class="form">
+     
+        <label for="iprompt">Instance Prompt <span>(eg. in the style of *Unique Name* )</span></label> 
+        <input type="text" id="iprompt" name="iprompt" required>
+        
+        <label for="cprompt"> Class Prompt <span> (eg. *Unique Name* style ) </span></label> 
+        <input type="text" id="cprompt" name="cprompt" required>
+      
+        <label for="steps">Steps <span>(steps = No. of images uploading * 100)</span></label> 
+        <input type="text" id="steps" name="steps" required>
+        <label for="upload">Click on "Choose File" to upload images<br><span>Recommended atleast 10 images. <br>Name of all images should be same and type .png <br> Image should be 512 X 512px. <br> Size should be less than 50KB </span></label> 
+        <input type="file" id="files" name="files" multiple accept=".png" >
+        <div class="button-container">
+        <button type="button" onclick="validateAndTrain()">Train</button>
+
+        </div>
+      </div>
+    
+   <script>
+    function move_image_gen() {
+      window.location.href = "/process1";
+    }
+    function validateAndTrain() {
+        // Your validation logic here
+        var iprompt = document.getElementById('iprompt').value.trim();
+        var cprompt = document.getElementById('cprompt').value.trim();
+        var steps = document.getElementById('steps').value.trim();
+        var fileInput = document.getElementById('files');
+
+        // Check if prompts are not left empty and are strings
+        if (iprompt === "" || !isNaN(iprompt)) {
+            alert('Please enter a valid Instance Prompt.');
+            return;
+        }
+
+        if (cprompt === "" || !isNaN(cprompt)) {
+            alert('Please enter a valid Class Prompt.');
+            return;
+        }
+
+        // Check if steps is not left empty and is an integer
+        if (steps === "" || isNaN(steps) || parseInt(steps) !== parseFloat(steps)) {
+            alert('Please enter a valid number of steps.');
+            return;
+        }
+           if (fileInput.files.length === 0) {
+            alert("Please select at least one image file.");
+            return;
+        }
+
+        // If validation passes, proceed to checkStatus
+        checkStatus();
+    }
+   
+        window.addEventListener('load', function() {
+          if ("{{page1}}"=="no"){
+        document.getElementById("btn2").disabled = true
+        document.getElementById("btn2").style.visibility = 'hidden';}
+  const loader = document.querySelector(".loader");
+  loader.classList.add("loader-hidden");
+  });
+    function checkStatus() {
+      const loader = document.querySelector(".loader");
+      loader.classList.remove("loader-hidden");
+
+      var data1 = document.getElementById("iprompt").value;
+      var data2 = document.getElementById("cprompt").value;
+      var data3 = document.getElementById("steps").value;
+      var fileInput = document.getElementById('files');
+
+      
+      var formData = new FormData();
+      
+      for (var i = 0; i < fileInput.files.length; i++) {
+        formData.append('file'+i, fileInput.files[i]);
+            }
+      var length_i = fileInput.files.length;
+      formData.append('data1', data1);
+      formData.append('data2', data2);
+      formData.append('data3', data3);
+      formData.append('length_i',length_i);
+      // Using Fetch API for AJAX
+      fetch('/check_status', {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => response.json())
+                .then(data => {
+                
+                    if (data.status === 'completed') {
+                        // Redirect to the result page when the processing is complete
+                        window.location.href = "/process1";
+                    } else {
+                        // Retry after a short delay if the processing is still ongoing
+                        setTimeout(checkStatus, 30000);
+
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking status:', error);
+                    // Retry after an error
+                    setTimeout(checkStatus, 30000);
+                });
+        }
+
+         document.getElementById('aboutUsLink').addEventListener('click', function() {
+        // Redirect to the About Us page when the link is clicked
+        window.location.href = "/aboutus";
+      });
+    </script>
+   
+</body>
+</html>

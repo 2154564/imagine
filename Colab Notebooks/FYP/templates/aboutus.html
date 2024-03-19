@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <!-- Add your CSS styles or link to an external stylesheet here -->
+    <style>
+      #tutorial{
+        position: absolute;
+        top: 10px;
+        left: 120px;
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+        z-index: 999;
+        cursor: pointer;
+}
+       #home {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+        z-index: 999;
+        cursor: pointer;
+        }
+
+        #btn2 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: bold;
+        z-index: 999;
+        cursor: pointer;
+}
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background: #0c192c; 
+            align-items: center;
+            justify-content: center;
+            align-items: center;
+            max-width: 3000px;
+            overflow: hidden;
+
+        }
+
+        h2 {
+        
+        margin-left: 290px;
+  
+        }
+     
+
+      p{
+        color: black;
+        margin-bottom: 3px;
+        margin-top: 6px /* Adjust the margin as needed */
+      }
+      h1 {
+        margin-top: 2px; /* Adjust the margin as needed */
+        color: black;
+        margin-left: 285px;
+        
+        }
+
+
+  
+    form {
+    -webkit-transform: translateX(35%);
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    justify-content: center;
+    padding: 40px;
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color:white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    height:content-fit;
+}
+*{
+  
+margin: 0; 
+padding: 0;
+box-sizing: border-box; } 
+
+
+
+
+
+.bubbles  {
+   position: relative;
+   display: flex;
+   
+}
+
+.bubbles span 
+{
+   position: relative;
+   width: 30px; 
+   height: 30px; 
+   background: #4fc3dc;
+   margin: 0 4px;
+   border-radius: 50%;
+   box-shadow: 0 0 0 10px #4Fc3dc44,
+   0 0 50px #4fc3dc,
+   0 0 100px #4fc3dc;
+   animation: animate 15s linear infinite;
+   animation-duration: calc(120s / var(--i));
+ 
+}
+
+.bubbles span:nth-child(even)
+{
+   background: #ff2d75;
+   box-shadow: 0 0 10px hsla(339, 100%, 59%, 0.267),
+   0 0 50px #ff2d75,
+   0 0 100px #ff2d75;
+
+}
+
+@keyframes animate {
+   0%
+   {
+      transform: translateY(150vh) scale(0); 
+   }
+100%
+   {
+       transform: translateY(-10vh) scale(1);
+    }
+}
+    </style>
+</head>
+<body>
+  <a  type="button" id = "btn2" onclick="move_image_gen()">Image Generator</a>
+  <a id="home" onclick="home()">Home</a>
+  <a id="tutorial" href="https://youtu.be/jMHEVEr8XTo">How To Use</a>
+  <div class = "container">
+     
+      <div class = "bubbles"> 
+        <span style=" --i : 11;"></span>
+        <span style= " --i : 22;"></span>
+        <span style=" --i : 12;"></span>
+        <span style= " --i : 15;"></span>
+        <span style=" --i : 16;"></span>
+        <span style= " --i : 17;"></span>
+        <span style=" --i : 19;"></span>
+        <span style= " --i : 20;"></span>
+        <span style=" --i : 25;"></span>
+        <span style= " --i : 14;"></span>
+        <span style=" --i : 11;"></span>
+        <span style= " --i : 22;"></span>
+        <span style=" --i : 12;"></span>
+        <span style= " --i : 15;"></span>
+        <span style=" --i : 16;"></span>
+        <span style= " --i : 17;"></span>
+        <span style=" --i : 19;"></span>
+        <span style= " --i : 20;"></span>
+        <span style=" --i : 25;"></span>
+        <span style= " --i : 14;"></span>
+        <span style=" --i : 11;"></span>
+        <span style= " --i : 12;"></span>
+        <span style= "--i : 22;"></span>
+        <span style="--i : 13;"></span>
+        <span style= "--i : 23;"></span>
+        <span style= "--i : 24;"> </span>
+        <span style= "--i : 14;"> </span>
+        <span style="--i : 27;"> </span>
+        <span style=" --i : 11;"></span>
+        <span style= " --i : 12;"></span>
+        <span style= "--i : 12;"></span>
+        <span style="--i : 16;"></span>
+        <span style= "--i : 23;"></span>
+        <span style= " --i : 15;"></span>
+        <span style=" --i : 16;"></span>
+        <span style= " --i : 17;"></span>
+        <span style=" --i : 19;"></span>
+        <span style= " --i : 20;"></span>
+        <span style=" --i : 25;"></span>
+        <span style= " --i : 14;"></span>
+        
+    </div>
+   </div>
+    <form>
+      <h1>About Us</h1>
+      <p>Welcome to Imagination, Where artist can generate what they imagine!</p>
+  
+      <h2>Our Mission</h2>
+      <p>
+          At Imagination, our mission is to empower artists by providing them with a unique platform to unleash their
+          creativity. We understand the importance of artistic expression, and we're here to make the creative process both
+          enjoyable and innovative.
+      </p>
+  
+      <h2> What We Offer</h2>
+  
+      <h4>Artistic Image Generation</h4>
+      <p>
+          Imagination allows artists to upload their artwork, enabling them to create personalized image generation
+          models. By training these models on their own artwork images, artists can generate new and unique artworks that reflect
+          their individual style and vision.
+      </p>
+  
+      <h4>Image Customization</h4>
+      <p>
+          Once the images are generated, artists have the freedom to apply filters and customize their creations further.
+          This feature not only enhances the generated artworks but also provides artists with a tool to experiment and
+          refine their ideas.
+      </p>
+  
+      <h4>Reference Images for Future Creations</h4>
+      <p>
+          Imagination is not just about image generation, it's a valuable resource for artists planning future
+          projects. Generate reference images in your unique art style to visualize and plan your next masterpiece before
+          bringing it to life.
+      </p>
+  
+      <h4>Marketplace Opportunities</h4>
+      <p>
+          In our upcoming updates, we'll introduce a marketplace where artists can showcase and sell the images generated by
+          the application. Earn royalties when other users download and use your creations, turning your digital art into a
+          source of income.
+      </p>
+  
+      <h2>Get Started</h2>
+      <p>
+          Join us on this artistic journey! Upload your images, create your own image generation model, and explore the
+          endless possibilities of digital art with Imagination.
+      </p>
+    </form>
+<script>
+  function home(){
+    window.location.href="/"
+  }
+  function move_image_gen() {
+      window.location.href = "/process1";
+    }
+
+</script>
+</body>
+</html>

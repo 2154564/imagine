@@ -1,0 +1,231 @@
+ #aboutUsLink {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+        z-index: 999;
+        cursor: pointer;
+}
+
+#btn2 {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+        font-weight: bold;
+        z-index: 999;
+        cursor: pointer;
+}
+#tutorial{
+        position: absolute;
+        top: 10px;
+        left: 120px;
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+        z-index: 999;
+        cursor: pointer;
+}
+
+
+
+body {
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    
+}
+
+.form {
+    transform: translate(-0%, -1%);
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    justify-content: center;
+    padding: 40px;
+    border: 1px solid white;
+    border-radius: 10px;
+    background-color:white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    width: min(500px, 90%);
+    height: fit-content;
+}
+
+.jj {
+    -webkit-transform: translateY(-20%);
+    text-align: center;
+    color: white; 
+    font-size: 20px;
+}
+
+
+
+h2 {
+    -webkit-transform: translateY(-20%);
+    text-align: center;
+    color: white;
+    font-size: 70px;
+    
+}
+
+label {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+input {
+    padding: 8px;
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.button-container {
+    display: flex;
+}
+
+button {
+    padding: 15px;
+    font-size: 1.2em;
+    background-color: #0c192c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    
+    margin-right: 60px; /* Optional: Add margin between buttons */
+    align-items: center; /* Corrected the property name */
+    -webkit-transform: translateX(230%);
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #25456c; /* Change the background color on hover */
+}
+
+
+
+
+
+span {
+  
+ 
+    font-size: 11px;
+    text-align: left;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+    input[type="file"] {
+    margin-bottom: 10px;
+}
+
+*{
+  
+margin: 0; 
+padding: 0;
+box-sizing: border-box; } 
+
+
+body{
+    height: 100vh;
+    background: #0c192c;
+    overflow: hidden;
+}
+
+
+.bubbles  {
+   position: relative;
+   display: flex;
+   
+}
+
+.bubbles span 
+{
+   position: relative;
+   width: 30px; 
+   height: 30px; 
+   background: #4fc3dc;
+   margin: 0 4px;
+   border-radius: 50%;
+   box-shadow: 0 0 0 10px #4Fc3dc44,
+   0 0 50px #4fc3dc,
+   0 0 100px #4fc3dc;
+   animation: animate 15s linear infinite;
+   animation-duration: calc(120s / var(--i));
+ 
+}
+
+.bubbles span:nth-child(even)
+{
+   background: #ff2d75;
+   box-shadow: 0 0 10px hsla(339, 100%, 59%, 0.267),
+   0 0 50px #ff2d75,
+   0 0 100px #ff2d75;
+
+}
+
+@keyframes animate {
+   0%
+   {
+      transform: translateY(150vh) scale(0); 
+   }
+100%
+   {
+       transform: translateY(-10vh) scale(1);
+    }
+}
+
+.loader{ position: fixed;
+  top: 0;
+  Left: 0;
+  width: 100vw; 
+  height: 100vh;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  background-color: #f7f9fb;
+  transition: opacity 0.75s, visibility 0.75s;
+  z-index: 1000;
+  font-size: 20px; 
+  font-weight: bold; 
+  margin-bottom: 10px; }
+.loader-hidden{
+  opacity: 0;
+  visibility: hidden;
+  
+  }
+.loader::after {
+  content: "";
+  width: 75px;
+  height: 75px;
+  border: 15px solid #dddddd;
+  border-top-color: #7449f5;
+  border-radius: 50%;
+  animation: loading 0.75s ease infinite;
+  
+  }
+@keyframes loading{
+  from{
+      transform: rotate(0turn);
+  }
+  to{
+      transform: rotate(1turn);
+  }
+
+  
+}
+
