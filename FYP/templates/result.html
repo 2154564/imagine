@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+   <link rel="stylesheet" href="{{url_for('static',filename='style/result.css')}}"> 
+  
+
+
+
+    <body >
+        <a id="aboutUsLink" ">About Us</a>
+        <a id="tutorial" href="https://youtu.be/jMHEVEr8XTo">How To Use</a>
+       <div class="loader-wrapper">
+      <span class="loader">Generating....<span class="loader-inner"></span></span>
+    </div>
+   
+        <div class = "container">
+          
+          <div class = "bubbles">  
+            <span style=" --i : 11;"></span>
+            <span style= " --i : 20;"></span>
+            <span style= "--i : 17;"></span>
+            <span style="--i : 15;"></span>
+            <span style= "--i : 22;"></span>
+            <span style=" --i : 13;"></span>
+            <span style= " --i : 15;"></span>
+            <span style= "--i : 25;"></span>
+            <span style="--i : 13;"></span>
+            <span style= "--i : 23;"></span>
+            
+            <span style= "--i : 24;"> </span>
+            <span style= "--i : 29;"> </span>
+            <span style="--i : 17;"> </span>
+            <span style=" --i : 16;"></span>
+            <span style= " --i : 12;"></span>
+            <span style= "--i : 22;"></span>
+            <span style="--i : 18;"></span>
+            <span style= "--i : 23;"></span>
+            <span style= "--i : 14;"> </span>
+            <span style= "--i : 14;"> </span>
+            <span style="--i : 27;"> </span>
+            <span style=" --i : 11;"></span>
+            <span style= " --i : 25;"></span>
+            <span style= "--i : 22;"></span>
+            <span style="--i : 13;"></span>
+            <span style= "--i : 23;"></span>
+            <span style= "--i : 24;"> </span>
+            <span style= "--i : 14;"> </span>
+            <span style="--i : 28;"> </span>
+            <span style=" --i : 11;"></span>
+            <span style= " --i : 12;"></span>
+            <span style= "--i : 12;"></span>
+            <span style="--i : 16;"></span>
+            <span style= "--i : 23;"></span>
+            <span style= "--i : 21;"> </span>
+            <span style= "--i : 14;"> </span>
+            <span style="--i : 25;"> </span>
+            <span style=" --i : 11;"></span>
+            <span style= " --i : 13;"></span>
+            <span style= "--i : 22;"></span>
+            <span style="--i : 13;"></span>
+            <span style= "--i : 23;"></span>
+            <span style= "--i : 24;"> </span>
+            <span style= "--i : 14;"> </span>
+            <span style= " --i : 12;"></span>
+            <span style= "--i : 22;"></span>
+            <span style="--i : 13;"></span>
+            <span style= "--i : 23;"></span>
+            <span style= "--i : 24;"> </span>
+            <span style= "--i : 14;"> </span>
+            <span style="--i : 27;"> </span>
+            <span style=" --i : 11;"></span>
+            <span style= " --i : 12;"></span>
+            <span style= "--i : 22;"></span>
+            <span style="--i : 13;"></span>
+            <span style= "--i : 23;"></span>
+            <span style= "--i : 24;"> </span>
+            
+        </div>
+       
+
+        </div>
+        <h1>Generate Images</h1>
+        <form action="/add0" method="post" >
+            <label for="prompt"> Prompt <br> <span>(Mention anything but end the sentence with Instance Prompt)</span></label> 
+            <input type="text" id="prompt" name="prompt" required>
+        
+            <label for="nprompt">Negative Prompt <span> (optional)<br>(Mention things which you do not want in the generated image)</span></label> 
+            <input type="text" id="nprompt" name="nprompt" >
+
+            <label for="sample">Sample Size <br><span>(Number of images you want model to generate)</span></label> 
+            <input type="text" id="sample" name="sample" required>
+            
+            <label for="gs">Guidance Scale <br><span>(Controls how much model will follow text prompt. Normally-7.5)</span></label> 
+            <input type="text" id="gs" name="gs" required>
+            
+            <div class="dimensions">
+                <div class="dimension-row">
+                    <label for="height">Height<br><span>(Normally-512)</span></label> 
+                    <input type="text" id="height" name="height" required>
+                </div>
+                <div class="dimension-row">
+                    <label for="width">Width<br><span>(Normally-512)</span></label> 
+                    <input type="text" id="width" name="width" required>
+                </div>
+            </div>
+          
+            <button type="generate"onclick="validateAndGenerate()">Generate</button>
+        </form>
+
+        <script>
+    function validateAndGenerate() {
+        // Your validation logic here
+        var prompt = document.getElementById('prompt').value;
+        var sample = document.getElementById('sample').value;
+        var gs = document.getElementById('gs').value;
+        var height = document.getElementById('height').value;
+        var width = document.getElementById('width').value;
+
+        // Validate prompt, sample, gs, height, and width
+        if (prompt.trim() === "") {
+            alert("Prompt cannot be empty.");
+            return;
+        }
+
+        if (isNaN(sample) || sample.trim() === "" || sample <= 0 || !Number.isInteger(Number(sample))) {
+            alert("Sample must be a positive integer.");
+            return;
+        }
+
+        if (isNaN(gs) || gs.trim() === "" || gs <= 0 || isNaN(parseFloat(gs))) {
+            alert("Guidance Scale must be a positive float.");
+            return;
+        }
+
+        if (isNaN(height) || height.trim() === "" || height <= 0 || height % 8 !== 0 || !Number.isInteger(Number(height))) {
+            alert("Height must be a positive integer divisible by 8.");
+            return;
+        }
+
+        if (isNaN(width) || width.trim() === "" || width <= 0 || width % 8 !== 0 || !Number.isInteger(Number(width))) {
+            alert("Width must be a positive integer divisible by 8.");
+            return;
+        }
+    loader_on()
+    }
+
+    window.addEventListener('load', function() {
+  const loader = document.querySelector(".loader");
+  loader.classList.add("loader-hidden");
+  });
+  function loader_on(){
+      const loader = document.querySelector(".loader");
+  loader.classList.remove("loader-hidden");
+  }
+  
+   document.getElementById('aboutUsLink').addEventListener('click', function() {
+        // Redirect to the About Us page when the link is clicked
+        window.location.href = "/aboutus";
+      });
+  </script>
+
+
+</body>
+</html>
